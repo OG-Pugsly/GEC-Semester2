@@ -10,12 +10,16 @@ using namespace std;
 
 //Globals
 SDL_Window* g_window = nullptr;
+SDL_Renderer* g_renderer = nullptr;
+SDL_Texture* g_texture = nullptr;
 
 //Function prototypes
 bool InitSDL();
 void CloseSDL();
 bool Update();
-
+void Render();
+SDL_Texture* LoadTextureFromFile(string path);
+void FreeTexture();
 
 int main(int argc, char* args[])
 {
@@ -60,6 +64,24 @@ bool InitSDL()
 			cout << "Window was not created. Error: " << SDL_GetError();
 			return false;
 		}
+
+		g_renderer = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED);
+		if (g_renderer != nullptr)
+		{
+			//Init PNG loading
+			int imageFlags = IMG_INIT_PNG;
+			if (!(IMG_Init(imageFlags) & imageFlags))
+			{
+				cout << "SDL_Image could not initialise. Error: " << SDL_GetError();
+				return false;
+			}
+		}
+		else
+		{
+			cout << "Renderer could not initialise. Error: " << SDL_GetError();
+			return false;
+		}
+
 	}
 }
 
