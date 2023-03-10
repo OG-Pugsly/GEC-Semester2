@@ -1,6 +1,6 @@
-#include "GameScreenManager.h"
 #include "GameScreen.h"
 #include "GameScreenLevel1.h"
+#include "GameScreenManager.h"
 
 
 GameScreenManager::GameScreenManager(SDL_Renderer* renderer, SCREENS startScreen)
