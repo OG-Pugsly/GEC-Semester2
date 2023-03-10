@@ -38,6 +38,15 @@ void Character::Render()
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
+	if (m_moving_left)
+	{
+		MoveLeft(deltaTime);
+	}
+	else if (m_moving_right)
+	{
+		MoveRight(deltaTime);
+	}
+
 	switch (e.type)
 	{
 	case SDL_KEYDOWN:
@@ -77,13 +86,13 @@ Vector2D Character::GetPosition()
 
 void Character::MoveLeft(float deltaTime)
 {
-	m_position.x -= 1;
+	m_position.x -= deltaTime * MOVEMENTSPEED;
 	m_facing_direction = FACING_LEFT;
 
 }
 
 void Character::MoveRight(float deltaTime)
 {
-	m_position.x += 1;
+	m_position.x += deltaTime * MOVEMENTSPEED;
 	m_facing_direction = FACING_RIGHT;
 }

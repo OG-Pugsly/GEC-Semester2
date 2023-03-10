@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include <iostream>
 #include "Commons.h"
+#include "constants.h"
 
 using namespace std;
 
