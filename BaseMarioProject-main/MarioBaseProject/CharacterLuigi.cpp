@@ -1,7 +1,7 @@
 #include "CharacterLuigi.h"
 #include "Texture2D.h"
 
-CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, string imagePath, Vector2D start_position) : Character(renderer, imagePath, start_position)
+CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, string imagePath, Vector2D start_position) : Character(renderer, imagePath, start_position, FACING_LEFT)
 {
 
 }
@@ -10,6 +10,7 @@ CharacterLuigi::~CharacterLuigi()
 {
 
 }
+
 
 void CharacterLuigi::Update(float deltaTime, SDL_Event e)
 {

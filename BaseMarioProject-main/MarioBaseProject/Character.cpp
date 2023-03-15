@@ -1,12 +1,13 @@
 #include "Character.h"
 #include "Texture2D.h"
 
-Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_position)
+Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_position, FACING facingDirection)
 {
 	m_renderer = renderer;
 	m_texture = new Texture2D(m_renderer);
 	m_position = start_position;
-	m_facing_direction = FACING_RIGHT;
+	m_facing_direction = facingDirection;
+	m_starting_facing_direction = facingDirection;
 
 	m_moving_left = false;
 	m_moving_right = false;
@@ -25,7 +26,7 @@ Character::~Character()
 void Character::Render()
 {
 	//Draw the Character
-	if (m_facing_direction == FACING_RIGHT)
+	if (m_facing_direction == m_starting_facing_direction)
 	{
 		m_texture->Render(m_position, SDL_FLIP_NONE);
 	}

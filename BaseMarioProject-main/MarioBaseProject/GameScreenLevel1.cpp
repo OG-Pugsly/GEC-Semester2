@@ -2,7 +2,6 @@
 #include <iostream>
 #include "Texture2D.h"
 #include "Character.h"
-#include "CharacterMario.h"
 
 
 
@@ -52,5 +51,5 @@ bool GameScreenLevel1::SetUpLevel()
 
 	//Set up Player Character
 	mario_character = new CharacterMario(m_renderer, "Images/Sprites/Mario.png", Vector2D(64, 330));
-	luigi_character = new CharacterLuigi(m_renderer, "Images/Sprites/Mario.png", Vector2D(128, 330));
+	luigi_character = new CharacterLuigi(m_renderer, "Images/Sprites/Luigi.png", Vector2D(128, 330));
 }
