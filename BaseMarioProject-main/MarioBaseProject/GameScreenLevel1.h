@@ -5,10 +5,12 @@
 #include "GameScreen.h"
 #include "Commons.h"
 #include "Character.h"
+#include "CharacterMario.h"
+#include "CharacterLuigi.h"
 
 class Texture2D;
 
-class Character;
+class CharacterMario;
 
 class GameScreenLevel1 : GameScreen
 {
@@ -21,7 +23,8 @@ public:
 
 private:
 	Texture2D* m_background_texture;
-	Character* my_character;
+	CharacterMario* mario_character;
+	CharacterLuigi* luigi_character;
 
 	bool SetUpLevel();
 };

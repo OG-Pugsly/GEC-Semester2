@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Texture2D.h"
 #include "Character.h"
+#include "CharacterMario.h"
 
 
 
@@ -15,8 +16,11 @@ GameScreenLevel1::~GameScreenLevel1()
 	delete m_background_texture;
 	m_background_texture = nullptr;
 
-	delete my_character;
-	my_character = nullptr;
+	delete mario_character;
+	mario_character = nullptr;
+
+	delete luigi_character;
+	luigi_character = nullptr;
 }
 
 void GameScreenLevel1::Render()
@@ -25,13 +29,15 @@ void GameScreenLevel1::Render()
 	m_background_texture->Render(Vector2D(), SDL_FLIP_NONE);
 
 	//Update Character
-	my_character->Render();
+	mario_character->Render();
+	luigi_character->Render();
 }
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 {
 	//Update Character
-	my_character->Update(deltaTime, e);
+	mario_character->Update(deltaTime, e);
+	luigi_character->Update(deltaTime, e);
 }
 
 bool GameScreenLevel1::SetUpLevel()
@@ -45,5 +51,6 @@ bool GameScreenLevel1::SetUpLevel()
 	}
 
 	//Set up Player Character
-	my_character = new Character(m_renderer, "Images/Sprites/Mario.png", Vector2D(64, 330));
+	mario_character = new CharacterMario(m_renderer, "Images/Sprites/Mario.png", Vector2D(64, 330));
+	luigi_character = new CharacterLuigi(m_renderer, "Images/Sprites/Mario.png", Vector2D(128, 330));
 }
