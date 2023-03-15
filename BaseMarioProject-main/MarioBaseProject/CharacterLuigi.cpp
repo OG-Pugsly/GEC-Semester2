@@ -1,7 +1,7 @@
 #include "CharacterLuigi.h"
 #include "Texture2D.h"
 
-CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, string imagePath, Vector2D start_position) : Character(renderer, imagePath, start_position, FACING_LEFT)
+CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, string imagePath, Vector2D start_position, LevelMap* map) : Character(renderer, imagePath, start_position, FACING_LEFT, map)
 {
 
 }

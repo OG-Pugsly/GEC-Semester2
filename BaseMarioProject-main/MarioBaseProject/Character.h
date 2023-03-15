@@ -7,6 +7,7 @@
 #include "Commons.h"
 #include "Constants.h"
 #include "Texture2D.h"
+#include "LevelMap.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ class Texture2D;
 class Character
 {
 public:
-	Character(SDL_Renderer* renderer, string imagePath, Vector2D start_position, FACING facingDirection);
+	Character(SDL_Renderer* renderer, string imagePath, Vector2D start_position, FACING facingDirection, LevelMap* map);
 	~Character();
 
 	virtual void Render();
@@ -29,6 +30,7 @@ public:
 private:
 	FACING m_facing_direction;
 	FACING m_starting_facing_direction;
+	LevelMap* m_current_level_map;
 
 
 protected:
