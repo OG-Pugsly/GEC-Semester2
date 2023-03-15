@@ -24,4 +24,4 @@ private:
 
 };
 
-#endif //_GAMESCREENMANAGER_H
+#endif // _GAMESCREENMANAGER_H

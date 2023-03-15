@@ -28,5 +28,5 @@ private:
 
 };
 
-#endif //_TEXTURE2D_H
+#endif // _TEXTURE2D_H
 

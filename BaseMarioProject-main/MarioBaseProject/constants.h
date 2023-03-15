@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _CONSTANTS_H
+#define _CONSTANTS_H
 
 //Screen Dimensions
 #define SCREEN_WIDTH 512
@@ -13,3 +15,5 @@
 //Character jump variables
 #define INITIAL_JUMP_FORCE 600.0f
 #define JUMP_FORCE_DECREMENT 400.0f
+
+#endif // _CONSTANTS_H

@@ -1,5 +1,4 @@
 #include "Character.h"
-#include "Texture2D.h"
 
 Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_position, FACING facingDirection)
 {
@@ -8,6 +7,8 @@ Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_po
 	m_position = start_position;
 	m_facing_direction = facingDirection;
 	m_starting_facing_direction = facingDirection;
+
+	m_collision_radius = 15.0f;
 
 	m_moving_left = false;
 	m_moving_right = false;
@@ -109,4 +110,9 @@ void Character::Jump()
 	m_jump_force = INITIAL_JUMP_FORCE;
 	m_jumping = true;
 	m_can_jump = false;
+}
+
+float Character::GetCollisionRadius()
+{
+	return m_collision_radius;
 }

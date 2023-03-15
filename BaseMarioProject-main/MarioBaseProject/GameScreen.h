@@ -21,4 +21,4 @@ protected:
 
 };
 
-#endif //_GAMESCREEN_H
+#endif // _GAMESCREEN_H

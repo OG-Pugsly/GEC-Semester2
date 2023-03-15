@@ -29,4 +29,4 @@ private:
 	bool SetUpLevel();
 };
 
-#endif //_GAMESCREENLEVEL1_H
+#endif // _GAMESCREENLEVEL1_H

@@ -19,4 +19,4 @@ protected:
 	
 };
 
-#endif // !_CHARACTERMARIO_H
+#endif // _CHARACTERMARIO_H

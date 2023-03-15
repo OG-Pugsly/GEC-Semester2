@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Commons.h"
 #include "Constants.h"
+#include "Texture2D.h"
 
 using namespace std;
 
@@ -21,6 +22,8 @@ public:
 	virtual void Update(float deltaTime, SDL_Event e);
 	void SetPosition(Vector2D new_position);
 	Vector2D GetPosition();
+	float GetCollisionRadius();
+	Rect2D GetCollisionBox() { return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); }
 
 
 private:
@@ -37,6 +40,7 @@ protected:
 	bool m_jumping;
 	bool m_can_jump;
 	float m_jump_force;
+	float m_collision_radius;
 	
 	virtual void MoveLeft(float deltaTime);
 	virtual void MoveRight(float deltaTime);
@@ -46,4 +50,4 @@ protected:
 
 };
 
-#endif // !_CHARACTER_H
+#endif // _CHARACTER_H

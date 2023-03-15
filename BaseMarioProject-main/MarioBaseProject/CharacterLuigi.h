@@ -19,4 +19,4 @@ protected:
 
 };
 
-#endif // !_CHARACTERLUIGI_H
+#endif // _CHARACTERLUIGI_H
