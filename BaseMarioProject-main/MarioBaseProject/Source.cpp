@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
-#include "constants.h"
+#include "Constants.h"
 #include <iostream>
 #include "Texture2D.h"
 #include "Commons.h"
