@@ -24,20 +24,20 @@ Collisions* Collisions::Instance()
 	return m_instance;
 }
 
-bool Collisions::Circle(Character* characterOne, Character* characterTwo)
+bool Collisions::Circle(Vector2D unitOnePosition, float unitOneCollisionRadius, Vector2D unitTwoPosition, float unitTwoCollisionRadius)
 {
-	Vector2D vec = Vector2D((characterOne->GetPosition().x - characterTwo->GetPosition().x), (characterOne->GetPosition().y - characterTwo->GetPosition().y));
+	Vector2D vec = Vector2D((unitOnePosition.x - unitTwoPosition.x), (unitOnePosition.y - unitTwoPosition.y));
 	double distance = sqrt((vec.x * vec.x) + (vec.y * vec.y));
-	double combined_distance = (characterOne->GetCollisionRadius() + characterTwo->GetCollisionRadius());
+	double combined_distance = (unitOneCollisionRadius + unitTwoCollisionRadius);
 	return distance < combined_distance;
 }
 
 bool Collisions::Box(Rect2D rectOne, Rect2D rectTwo)
 {
-	if (rectOne.x + (rectOne.width / 2) > rectTwo.x &&
-		rectOne.x + (rectOne.width / 2) < rectTwo.x + rectTwo.width &&
-		rectOne.y + (rectOne.height / 2) > rectTwo.y &&
-		rectOne.y + (rectOne.height / 2) < rectTwo.y + rectTwo.height)
+	if (rectOne.x + rectOne.width > rectTwo.x &&
+		rectOne.x < rectTwo.x + rectTwo.width &&
+		rectOne.y + rectOne.height > rectTwo.y &&
+		rectOne.y < rectTwo.y + rectTwo.height)
 	{
 		return true;
 	}

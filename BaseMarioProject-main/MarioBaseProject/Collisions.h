@@ -14,7 +14,7 @@ public:
 
 	static Collisions* Instance();
 
-	bool Circle(Character* characterOne, Character* characterTwo);
+	bool Circle(Vector2D unitOnePosition, float unitOneCollisionRadius, Vector2D unitTwoPosition, float unitTwoCollisionRadius);
 	bool Box(Rect2D rectOne, Rect2D rectTwo);
 
 
