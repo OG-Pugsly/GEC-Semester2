@@ -101,4 +101,6 @@ void GameScreenLevel1::SetLevelMap()
 
 	//Set the new one
 	m_level_map = new LevelMap(map);
+
+
 }
