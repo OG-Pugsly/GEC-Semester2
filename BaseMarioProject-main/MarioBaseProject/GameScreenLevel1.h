@@ -10,8 +10,8 @@
 #include "LevelMap.h"
 
 class Texture2D;
-
 class CharacterMario;
+class PowBlock;
 
 class GameScreenLevel1 : GameScreen
 {
@@ -21,15 +21,18 @@ public:
 
 	void Render() override;
 	void Update(float delta, SDL_Event e) override;
+	void UpdatePowBlock();
 
 private:
 	Texture2D* m_background_texture;
 	CharacterMario* mario_character;
 	CharacterLuigi* luigi_character;
 	LevelMap* m_level_map;
+	PowBlock* m_pow_block;
 
 	bool SetUpLevel();
 	void SetLevelMap();
+	
 
 
 protected:

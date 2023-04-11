@@ -25,6 +25,8 @@ public:
 	Vector2D GetPosition();
 	float GetCollisionRadius();
 	Rect2D GetCollisionBox() { return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); }
+	bool IsJumping() { return m_jumping; }
+	void CancelJump() { m_jumping = false; }
 
 
 private:
