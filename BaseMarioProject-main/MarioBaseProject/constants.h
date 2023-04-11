@@ -24,4 +24,7 @@
 #define TILE_HEIGHT 32
 #define TILE_WIDTH 32
 
+//Shake Duration
+#define SHAKE_DURATION 0.25f
+
 #endif // _CONSTANTS_H
