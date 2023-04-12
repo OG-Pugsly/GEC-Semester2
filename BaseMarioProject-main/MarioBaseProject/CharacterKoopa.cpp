@@ -2,6 +2,7 @@
 
 CharacterKoopa::CharacterKoopa(SDL_Renderer* renderer, string imagePath, Vector2D start_position, LevelMap* map, FACING start_facing, float movement_speed) : Character(renderer, imagePath, start_position, start_facing, map)
 {
+	m_facing_direction = start_facing;
 	m_movement_speed = movement_speed;
 	m_position = start_position;
 	m_injured = false;
