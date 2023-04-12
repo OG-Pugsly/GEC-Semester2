@@ -27,7 +27,8 @@ public:
 	Rect2D GetCollisionBox() { return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); }
 	bool IsJumping() { return m_jumping; }
 	void CancelJump() { m_jumping = false; }
-
+	void SetAlive(bool isAlive) { m_alive = isAlive; }
+	bool GetAlive() { return m_alive; }
 
 private:
 	FACING m_facing_direction;
@@ -45,6 +46,7 @@ protected:
 	bool m_can_jump;
 	float m_jump_force;
 	float m_collision_radius;
+	bool m_alive;
 	
 	virtual void MoveLeft(float deltaTime);
 	virtual void MoveRight(float deltaTime);

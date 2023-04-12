@@ -15,6 +15,8 @@ Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_po
 
 	m_current_level_map = map;
 
+	m_alive = true;
+
 	if (!m_texture->LoadFromFile(imagePath))
 	{
 		std::cout << "Failed to load Character texture!" << std::endl;

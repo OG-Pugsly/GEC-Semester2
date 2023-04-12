@@ -27,4 +27,10 @@
 //Shake Duration
 #define SHAKE_DURATION 0.25f
 
+//Koopa Injured time
+#define INJURED_TIME 2.5f
+
+//Koopa speed
+#define KOOPA_SPEED 96.0f
+
 #endif // _CONSTANTS_H
