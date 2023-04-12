@@ -14,6 +14,7 @@ public:
 	bool GetInjured() { return m_injured; }
 	void Render() override;
 	void Update(float deltaTime, SDL_Event e) override;
+	void FlipRightWay();
 
 private:
 	float m_single_sprite_w;
@@ -23,7 +24,7 @@ private:
 	bool m_injured;
 	float m_injured_time;
 
-	void FlipRightWay();
+	
 
 protected:
 

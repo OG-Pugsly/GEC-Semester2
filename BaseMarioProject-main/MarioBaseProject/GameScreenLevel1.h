@@ -36,6 +36,7 @@ private:
 	float m_wobble;
 	float m_background_yPos;
 	vector<CharacterKoopa*> m_enemies;
+	float m_koopa_spawn_timer;
 
 	bool SetUpLevel();
 	void SetLevelMap();

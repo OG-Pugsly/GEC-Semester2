@@ -92,6 +92,14 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	//Update Pow block
 	UpdatePowBlock();
 
+	//Update Koopa Spawn Timer
+	m_koopa_spawn_timer -= deltaTime;
+	if (m_koopa_spawn_timer <= 0.0f)
+	{
+		CreateKoopa(Vector2D(150, 32), FACING_RIGHT, KOOPA_SPEED);
+		m_koopa_spawn_timer = KOOPA_SPAWN_TIMER;
+	}
+
 	//Update Enemies
 	UpdateEnemies(deltaTime, e);
 }
@@ -116,6 +124,9 @@ bool GameScreenLevel1::SetUpLevel()
 	//Add Koopa enemies
 	CreateKoopa(Vector2D(150, 32), FACING_RIGHT, KOOPA_SPEED);
 	CreateKoopa(Vector2D(325, 32), FACING_RIGHT, KOOPA_SPEED);	
+
+	//Initialise Koopa Spawn Timer
+	m_koopa_spawn_timer = KOOPA_SPAWN_TIMER;
 }
 
 void GameScreenLevel1::SetLevelMap()
@@ -208,9 +219,9 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 			if (m_enemies[enemy]->GetPosition().y > 300.0f)
 			{
 				//Is the enemy off screen to the left or right?
-				if (m_enemies[enemy]->GetPosition().x < (float)(-m_enemies[enemy]->GetCollisionBox().width * 0.5f) || m_enemies[enemy]->GetPosition().x > SCREEN_WIDTH - (float)(m_enemies[enemy]->GetCollisionBox().width * 0.55f))
+				if (m_enemies[enemy]->GetPosition().x < 0.0f + (float)(m_enemies[enemy]->GetCollisionBox().width * 0.5f) || m_enemies[enemy]->GetPosition().x > SCREEN_WIDTH - (float)(m_enemies[enemy]->GetCollisionBox().width * 0.55f))
 				{
-					m_enemies[enemy]->SetAlive(false);
+					m_enemies[enemy]->FlipRightWay();
 				}
 			}
 

@@ -33,4 +33,7 @@
 //Koopa speed
 #define KOOPA_SPEED 96.0f
 
+//Koopa respawn time
+#define KOOPA_SPAWN_TIMER 20.0f
+
 #endif // _CONSTANTS_H
