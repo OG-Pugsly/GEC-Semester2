@@ -6,7 +6,6 @@
 #include "PowBlock.h"
 
 
-
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer)
 {
 	m_level_map = nullptr;
@@ -33,6 +32,12 @@ GameScreenLevel1::~GameScreenLevel1()
 		delete m_enemies[enemy];
 	}
 	m_enemies.clear();
+
+	for (int coin = 0; coin < m_coins.size(); coin++)
+	{
+		delete m_coins[coin];
+	}
+	m_coins.clear();
 }
 
 void GameScreenLevel1::Render()
@@ -44,6 +49,12 @@ void GameScreenLevel1::Render()
 	for (int enemy = 0; enemy < m_enemies.size(); enemy++)
 	{
 		m_enemies[enemy]->Render();
+	}
+
+	//Draw the coins
+	for (int coin = 0; coin < m_coins.size(); coin++)
+	{
+		m_coins[coin]->Render();
 	}
 
 	//Update Character
@@ -102,6 +113,9 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 
 	//Update Enemies
 	UpdateEnemies(deltaTime, e);
+
+	//Update Coins
+	UpdateCoins(deltaTime, e);
 }
 
 bool GameScreenLevel1::SetUpLevel()
@@ -127,6 +141,11 @@ bool GameScreenLevel1::SetUpLevel()
 
 	//Initialise Koopa Spawn Timer
 	m_koopa_spawn_timer = KOOPA_SPAWN_TIMER;
+
+	//Set up Coins
+	CreateCoin(Vector2D(200, 130), FACING_LEFT);
+	CreateCoin(Vector2D(150, 130), FACING_LEFT);
+	CreateCoin(Vector2D(250, 130), FACING_LEFT);
 }
 
 void GameScreenLevel1::SetLevelMap()
@@ -216,7 +235,7 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 		for (unsigned int enemy = 0; enemy < m_enemies.size(); enemy++)
 		{
 			m_enemies[enemy]->timeSinceFlip += deltaTime;
-			cout << m_enemies[enemy]->GetPosition().y << endl;
+
 			//Check if enemy is on the bottom row of tiles
 			if (m_enemies[enemy]->GetPosition().y < 355.0f)
 			{
@@ -281,9 +300,73 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 	}
 }
 
+void GameScreenLevel1::UpdateCoins(float deltaTime, SDL_Event e)
+{
+	if (!m_coins.empty())
+	{
+		int coinIndexToDelete = -1;
+		for (unsigned int coin = 0; coin < m_coins.size(); coin++)
+		{
+			//Now do the update
+			m_coins[coin]->Update(deltaTime, e);
+
+			//Check to see if the enemy collides with player
+			if ((m_coins[coin]->GetPosition().y > 300.0f || m_coins[coin]->GetPosition().y <= 64.0f) && (m_coins[coin]->GetPosition().x < 64.0f || m_coins[coin]->GetPosition().x > SCREEN_WIDTH - 96.0f))
+			{
+				//Ignore Collisions if behind pipe
+			}
+			else
+			{
+				if (Collisions::Instance()->Circle(m_coins[coin]->GetPosition(), m_coins[coin]->GetCollisionRadius(), mario_character->GetPosition(), mario_character->GetCollisionRadius()))
+				{
+					if (m_coins[coin]->Collected())
+					{
+						m_coins[coin]->SetAlive(false);
+					}
+					else
+					{
+						//Kill Mario
+					}
+				}
+
+				if (Collisions::Instance()->Circle(m_coins[coin]->GetPosition(), m_coins[coin]->GetCollisionRadius(), luigi_character->GetPosition(), luigi_character->GetCollisionRadius()))
+				{
+					if (m_coins[coin]->Collected())
+					{
+						m_coins[coin]->SetAlive(false);
+					}
+					else
+					{
+						//Kill Luigi
+					}
+				}
+			}
+
+			//If the enemy is no longer alive then schedule it for deletion
+			if (!m_coins[coin]->GetAlive())
+			{
+				coinIndexToDelete = coin;
+			}
+		}
+
+		//Remove dead enemies -1 each update
+		if (coinIndexToDelete != -1)
+		{
+			m_coins.erase(m_coins.begin() + coinIndexToDelete);
+		}
+	}
+}
+
 void GameScreenLevel1::CreateKoopa(Vector2D position, FACING direction, float speed)
 {
 	//Set up Koopa Character
 	CharacterKoopa* koopa = new CharacterKoopa(m_renderer, "Images/Sprites/Koopa.png", position, m_level_map, direction, speed);
 	m_enemies.push_back(koopa);
+}
+
+void GameScreenLevel1::CreateCoin(Vector2D position, FACING direction)
+{
+	//Set up Koopa Character
+	CharacterCoin* coin = new CharacterCoin(m_renderer, "Images/Sprites/Coin.png", position, m_level_map, direction);
+	m_coins.push_back(coin);
 }

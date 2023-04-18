@@ -36,6 +36,10 @@
 //Koopa respawn time
 #define KOOPA_SPAWN_TIMER 20.0f
 
+//Delay for Koopa turn around on screen edges
 #define KOOPA_FLIP_TIME_DELAY 2.0f
+
+//Delay for coin spin animation
+#define COIN_ANIMATION_DELAY 0.1f
 
 #endif // _CONSTANTS_H

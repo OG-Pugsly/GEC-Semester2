@@ -60,7 +60,7 @@ void CharacterKoopa::Render()
 	}
 
 	//Get the portion of the sprite sheet you want to draw
-	// {xPos, yPox, width of sprite, height of sprite}
+	// {xPos, yPos, width of sprite, height of sprite}
 	SDL_Rect portion_of_sprite = { left, 0, m_single_sprite_w, m_single_sprite_h };
 
 	//Determine where you want it to be drawn

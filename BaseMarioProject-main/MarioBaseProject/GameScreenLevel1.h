@@ -10,9 +10,10 @@
 #include "LevelMap.h"
 #include <vector>
 #include "CharacterKoopa.h"
+#include "CharacterCoin.h"
 
 class Texture2D;
-class CharacterMario;
+//class CharacterMario;
 class PowBlock;
 
 class GameScreenLevel1 : GameScreen
@@ -37,12 +38,15 @@ private:
 	float m_background_yPos;
 	vector<CharacterKoopa*> m_enemies;
 	float m_koopa_spawn_timer;
+	vector<CharacterCoin*> m_coins;
 
 	bool SetUpLevel();
 	void SetLevelMap();
 	void DoScreenShake();
 	void UpdateEnemies(float deltaTime, SDL_Event e);
+	void UpdateCoins(float deltaTime, SDL_Event e);
 	void CreateKoopa(Vector2D position, FACING direction, float speed);
+	void CreateCoin(Vector2D position, FACING direction);
 
 protected:
 
