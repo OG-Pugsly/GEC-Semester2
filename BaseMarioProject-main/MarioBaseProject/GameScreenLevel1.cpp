@@ -215,14 +215,19 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 		int enemyIndexToDelete = -1;
 		for (unsigned int enemy = 0; enemy < m_enemies.size(); enemy++)
 		{
+			m_enemies[enemy]->timeSinceFlip += deltaTime;
+			cout << m_enemies[enemy]->GetPosition().y << endl;
 			//Check if enemy is on the bottom row of tiles
-			if (m_enemies[enemy]->GetPosition().y > 300.0f)
+			if (m_enemies[enemy]->GetPosition().y < 355.0f)
 			{
 				//Is the enemy off screen to the left or right?
-				if (m_enemies[enemy]->GetPosition().x < (float)(-m_enemies[enemy]->GetCollisionBox().width * 0.5f) || m_enemies[enemy]->GetPosition().x > SCREEN_WIDTH - (float)(m_enemies[enemy]->GetCollisionBox().width * 0.55f))
+				if (m_enemies[enemy]->GetPosition().x < 0.0f || m_enemies[enemy]->GetPosition().x > SCREEN_WIDTH - (float)(m_enemies[enemy]->GetCollisionBox().width * 0.55f))
 				{
-					
-					m_enemies[enemy]->FlipRightWay();
+					if (m_enemies[enemy]->timeSinceFlip >= KOOPA_FLIP_TIME_DELAY)
+					{
+						m_enemies[enemy]->timeSinceFlip = 0.0f;
+						m_enemies[enemy]->FlipRightWay();
+					}
 				}
 			}
 

@@ -15,6 +15,8 @@ public:
 	void Render() override;
 	void Update(float deltaTime, SDL_Event e) override;
 	void FlipRightWay();
+	
+	float timeSinceFlip = KOOPA_FLIP_TIME_DELAY;
 
 private:
 	float m_single_sprite_w;

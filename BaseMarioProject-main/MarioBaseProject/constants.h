@@ -36,4 +36,6 @@
 //Koopa respawn time
 #define KOOPA_SPAWN_TIMER 20.0f
 
+#define KOOPA_FLIP_TIME_DELAY 2.0f
+
 #endif // _CONSTANTS_H
