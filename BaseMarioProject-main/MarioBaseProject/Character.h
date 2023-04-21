@@ -29,11 +29,14 @@ public:
 	void CancelJump() { m_jumping = false; }
 	void SetAlive(bool isAlive) { m_alive = isAlive; }
 	bool GetAlive() { return m_alive; }
+	int AddToScore(int numOfPoints) { m_num_of_points += numOfPoints; };
+	int GetScore() { return m_num_of_points; };
 
 private:
 	FACING m_facing_direction;
 	FACING m_starting_facing_direction;
 	LevelMap* m_current_level_map;
+	int m_num_of_points;
 
 
 protected:

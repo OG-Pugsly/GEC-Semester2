@@ -320,11 +320,13 @@ void GameScreenLevel1::UpdateCoins(float deltaTime, SDL_Event e)
 				if (Collisions::Instance()->Circle(m_coins[coin]->GetPosition(), m_coins[coin]->GetCollisionRadius(), mario_character->GetPosition(), mario_character->GetCollisionRadius()))
 				{
 					m_coins[coin]->SetAlive(false);
+					mario_character->AddToScore(1);
 				}
 
 				if (Collisions::Instance()->Circle(m_coins[coin]->GetPosition(), m_coins[coin]->GetCollisionRadius(), luigi_character->GetPosition(), luigi_character->GetCollisionRadius()))
 				{
 					m_coins[coin]->SetAlive(false);
+					luigi_character->AddToScore(1);
 				}
 			}
 
