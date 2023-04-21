@@ -11,7 +11,6 @@ public:
 	~CharacterCoin();
 	void Render() override;
 	void Update(float deltaTime, SDL_Event e) override;
-	//bool Collected() { return m_collected; }
 
 private:
 	bool m_collected;

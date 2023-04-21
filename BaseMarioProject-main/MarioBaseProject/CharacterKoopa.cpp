@@ -80,6 +80,7 @@ void CharacterKoopa::Render()
 
 void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 {
+
 	//Use the code in the base class
 	Character::Update(deltaTime, e);
 

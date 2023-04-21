@@ -30,6 +30,9 @@
 //Koopa Injured time
 #define INJURED_TIME 2.5f
 
+//Enemy spawn timer
+#define ENEMY_SPAWN_TIMER 10.0f
+
 //Koopa speed
 #define KOOPA_SPEED 96.0f
 

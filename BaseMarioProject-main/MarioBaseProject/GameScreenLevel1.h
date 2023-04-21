@@ -10,6 +10,7 @@
 #include "LevelMap.h"
 #include <vector>
 #include "CharacterKoopa.h"
+#include "CharacterGoomba.h"
 #include "CharacterCoin.h"
 
 class Texture2D;
@@ -36,8 +37,11 @@ private:
 	float m_shake_time;
 	float m_wobble;
 	float m_background_yPos;
-	vector<CharacterKoopa*> m_enemies;
+	vector<CharacterKoopa*> m_koopas;
+	vector<CharacterGoomba*> m_goombas;
+	float m_enemy_spawn_timer;
 	float m_koopa_spawn_timer;
+	int m_enemy_spawn_count;
 	vector<CharacterCoin*> m_coins;
 
 	bool SetUpLevel();
@@ -46,6 +50,7 @@ private:
 	void UpdateEnemies(float deltaTime, SDL_Event e);
 	void UpdateCoins(float deltaTime, SDL_Event e);
 	void CreateKoopa(Vector2D position, FACING direction, float speed);
+	void CreateGoomba(Vector2D position, FACING direction, float speed);
 	void CreateCoin(Vector2D position, FACING direction);
 
 protected:
