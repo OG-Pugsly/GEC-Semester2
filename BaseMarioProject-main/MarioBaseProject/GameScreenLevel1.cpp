@@ -310,7 +310,7 @@ void GameScreenLevel1::UpdateCoins(float deltaTime, SDL_Event e)
 			//Now do the update
 			m_coins[coin]->Update(deltaTime, e);
 
-			//Check to see if the enemy collides with player
+			//Check to see if the coin collides with player
 			if ((m_coins[coin]->GetPosition().y > 300.0f || m_coins[coin]->GetPosition().y <= 64.0f) && (m_coins[coin]->GetPosition().x < 64.0f || m_coins[coin]->GetPosition().x > SCREEN_WIDTH - 96.0f))
 			{
 				//Ignore Collisions if behind pipe
@@ -319,37 +319,23 @@ void GameScreenLevel1::UpdateCoins(float deltaTime, SDL_Event e)
 			{
 				if (Collisions::Instance()->Circle(m_coins[coin]->GetPosition(), m_coins[coin]->GetCollisionRadius(), mario_character->GetPosition(), mario_character->GetCollisionRadius()))
 				{
-					if (m_coins[coin]->Collected())
-					{
-						m_coins[coin]->SetAlive(false);
-					}
-					else
-					{
-						//Kill Mario
-					}
+					m_coins[coin]->SetAlive(false);
 				}
 
 				if (Collisions::Instance()->Circle(m_coins[coin]->GetPosition(), m_coins[coin]->GetCollisionRadius(), luigi_character->GetPosition(), luigi_character->GetCollisionRadius()))
 				{
-					if (m_coins[coin]->Collected())
-					{
-						m_coins[coin]->SetAlive(false);
-					}
-					else
-					{
-						//Kill Luigi
-					}
+					m_coins[coin]->SetAlive(false);
 				}
 			}
 
-			//If the enemy is no longer alive then schedule it for deletion
+			//If the coin is collected then schedule it for deletion
 			if (!m_coins[coin]->GetAlive())
 			{
 				coinIndexToDelete = coin;
 			}
 		}
 
-		//Remove dead enemies -1 each update
+		//Remove coin -1 each update
 		if (coinIndexToDelete != -1)
 		{
 			m_coins.erase(m_coins.begin() + coinIndexToDelete);
