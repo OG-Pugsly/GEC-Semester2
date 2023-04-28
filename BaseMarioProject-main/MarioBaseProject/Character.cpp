@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "SoundEffect.h"
 
 Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_position, FACING facingDirection, LevelMap* map)
 {
@@ -130,6 +131,7 @@ void Character::Jump()
 		m_jump_force = INITIAL_JUMP_FORCE;
 		m_jumping = true;
 		m_can_jump = false;
+		SoundEffect::Instance()->Play("Audio/8-Bit Sound Library/Mp3/Jump_00.mp3", false);
 	}
 }
 
