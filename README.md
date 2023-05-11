@@ -4,20 +4,34 @@
 
 For this assignment we are tasked with writing a 2D game using C++ and the SDL library.
 
-The first game/level is a tutorial led Mario Bros clone. The second game/level is of our own design.
+The game/level is a tutorial led Mario Bros clone.
 
 
 ## Description of personal project
 
-WIP
+Mario clone platformer. Currently not a complete gameplay loop.
 
 ## Game Rules and Mechanics
 
-WIP
+**Game Rules**
+
+Currently a showcase of things taught in tutorials.
+
+Currently no complete gameplay loop, player is unaffected by enemies.
+
+Enemies can be defeated but no score is given.
+
+**Mechanics**
+
+Two players can simultaneously move in the gameworld.
+
+Players can jump into POW blocks to flip enemies over for a limited time, during which the player can hit into them to destory them.
+
+Background music plays on loop, sound effect occurs when player jumps.
 
 ## External assets used
 
-None
+SDL framework
 
 ## Video link to gameplay
 
